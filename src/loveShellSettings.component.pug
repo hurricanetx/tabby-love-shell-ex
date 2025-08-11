@@ -1,0 +1,38 @@
+h3 Love Shell
+
+div.form-line
+    .header
+        .title Inference engine key
+        .description Enter your inference engine key
+    input.form-control(type='password', [(ngModel)]='config.store.loveShell.apiKey', placeholder='Enter your inference engine key')
+
+div.form-line
+    .header
+        .title Inference engine model
+        .description Enter your inference engine model
+    input.form-control(type='text', [(ngModel)]='config.store.loveShell.model', placeholder='Enter your inference engine model')
+
+div.form-line
+    .header
+        .title API Base URL (Optional)
+        .description Enter custom API base URL for third-party LLM services
+    input.form-control(type='text', [(ngModel)]='config.store.loveShell.baseUrl', placeholder='https://api.openai.com/v1')
+
+div.form-line
+    .header
+        .title API Base URL Help
+        .description Leave empty to use OpenAI's default API. For third-party services, enter their API endpoint (e.g., https://api.anthropic.com/v1, https://api.cohere.com/v1, etc.)
+
+div.form-line
+    .header
+        .title Hotkey
+        .description Configure keyboard shortcut to open Love Shell
+    input.form-control(type='text', [(ngModel)]='config.store.hotkeys.love-shell[0]', placeholder='Ctrl+Shift+L')
+
+div.form-line.buttons
+    button.btn.btn-outline-secondary((click)='resetToDefaults()') 
+        i.fa.fa-undo
+        |  Reset to Defaults
+    button.btn.btn-primary((click)='saveSettings()') 
+        i.fa.fa-save
+        |  Save Settings

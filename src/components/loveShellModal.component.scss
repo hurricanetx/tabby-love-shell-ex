@@ -1,0 +1,33 @@
+.loveShellInputContainer {
+    margin-bottom: 15px;
+}
+
+.loveShellOutputContainer {
+    margin-bottom: 15px;
+}
+
+.loveShellResult {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.spinnerContainer {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+
+.errorContainer {
+    text-align: center;
+    padding: 20px;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}

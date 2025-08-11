@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core'
+import { ToolbarButtonProvider, ConfigService, NotificationsService, HotkeysService, IToolbarButton } from 'tabby-core'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { LoveShellModalComponent } from './components/loveShellModal.component'
+
+@Injectable()
+/** @hidden */
+export class LoveShellButtonProvider extends ToolbarButtonProvider {
+    constructor(
+        private ngbModal: NgbModal,
+        private config: ConfigService,
+        private notifications: NotificationsService,
+        private hotkeys: HotkeysService
+    ) {
+        super()
+        this.hotkeys.hotkey$.subscribe((hotkey) => {
+            if (hotkey === 'love-shell') {
+                this.activate()
+            }
+        })
+    }
+
+    activate() {
+        if (!this.config.store.loveShell.apiKey || !this.config.store.loveShell.model) {
+            this.notifications.notice('Please go to Settings => loveShell to setup config before use')
+        } else {
+            this.ngbModal.open(LoveShellModalComponent)
+        }
+    }
+
+    provide(): IToolbarButton[] {
+        return [{
+            icon: 'fa fa-heart',
+            title: 'Love Shell',
+            click: () => this.activate(),
+        }]
+    }
+}

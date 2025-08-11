@@ -1,0 +1,31 @@
+.modal-header
+    h4.modal-title Love Shell
+
+.modal-body
+    .loveShellInputContainer
+        input.form-control.loveShell(
+            type='text',
+            [(ngModel)]='searchInput',
+            autofocus,
+            placeholder='Enter natural language to search shell command',
+            (ngModelChange)='refresh()',
+            (keyup.enter)='findSuggestion()'
+        )
+    
+    .spinnerContainer(*ngIf='loading')
+        | loading...
+    
+    .errorContainer(*ngIf='error')
+        | Wrong api key
+    
+    .loveShellOutputContainer(*ngIf='suggestion && !error')
+        | Suggest Shell command:
+        input.form-control.loveShellResult(
+            type='text',
+            [(ngModel)]='suggestion',
+            disabled
+        )
+
+.modal-footer(*ngIf='suggestion')
+    button.btn.btn-outline-primary((click)='close()') Close
+    button.btn.btn-outline-primary((click)='apply()') Apply

@@ -15,7 +15,18 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                use: {
+                    loader: 'ts-loader',
+                    options: {
+                        compilerOptions: {
+                            target: 'ES2020',
+                            module: 'commonjs',
+                            experimentalDecorators: true,
+                            emitDecoratorMetadata: true,
+                        },
+                        transpileOnly: true,
+                    },
+                },
                 exclude: /node_modules/,
             },
             {
